@@ -93,5 +93,79 @@ const listaProdutos = [
     "imagem": "camera-sony-alpha-a7-iii.png",
     "categoria": "Eletrônicos",
     "classificacao": 4
-  }
+  },
+  {
+  "id": 11,
+  "nome": "Tablet Samsung Galaxy Tab S9",
+  "descricao": "Tablet com tela de 11 polegadas, 8GB de RAM, 128GB de armazenamento e suporte a S Pen",
+  "preco": 3499.99,
+  "imagem": "tablet.png",
+  "categoria": "Eletrônicos",
+  "classificacao": 4
+},
+{
+  "id": 12,
+  "nome": "Cadeira Gamer ThunderX3 EC3",
+  "descricao": "Cadeira ergonômica com ajuste de altura, apoio lombar e reclinação de até 180 graus",
+  "preco": 1299.99,
+  "imagem": "cadeira.png",
+  "categoria": "Eletrônicos",
+  "classificacao": 5
+}
+
 ]
+const container = document.getElementById('container')
+
+
+function formatarPreco(valor) {
+  return valor.toLocaleString('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  })
+}
+
+function criarAvaliacao(nota) {
+  const span = document.createElement('span')
+  span.className = 'avaliacao'
+  span.textContent = `${nota} ${'⭐'.repeat(Math.round(nota))}`
+  return span
+}
+
+function criarParcelamento(preco) {
+  const span = document.createElement('span')
+  span.className = 'parcela'
+
+  const vezes = 10
+  const valor = preco / vezes
+
+  span.textContent = `ou ${vezes}x de ${formatarPreco(valor)}`
+  return span
+}
+
+// criar card
+function criarCard(produto) {
+
+  const card = document.createElement('div')
+  card.className = 'card'
+
+  const img = document.createElement('img')
+  img.src = `./img/${produto.imagem}`
+
+  const nome = document.createElement('h3')
+  nome.textContent = produto.nome
+
+  const preco = document.createElement('span')
+  preco.className = 'preco'
+  preco.textContent = formatarPreco(produto.preco)
+
+  const parcela = criarParcelamento(produto.preco)
+
+  const avaliacao = criarAvaliacao(produto.classificacao)
+
+  card.append(img, nome, preco, parcela, avaliacao)
+
+  return card
+}
+
+const cards = listaProdutos.map(criarCard)
+container.append(...cards)

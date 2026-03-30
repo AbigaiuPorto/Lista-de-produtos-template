@@ -1,5 +1,60 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial;
+  background: #f4f6f8;
+
+}
+
+#container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 20px;
+ max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  background: white;
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  align-items: center;
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  background: #fff;
+}
+
+
+.card h3 {
+  font-size: 16px;
+  margin: 8px 0;
+}
+
+.card span {
+  display: block;
+  margin: 3px 0;
+}
+
+.preco {
+  font-weight: bold;
+  color: #00a650;
+}
+
+.parcela {
+  font-size: 13px;
+  color: #555;
+}
+
+.avaliacao {
+  color: #000000;
 }
